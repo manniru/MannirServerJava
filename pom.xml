@@ -47,7 +47,7 @@
                 <shadedClassifierName>shaded</shadedClassifierName>
                 <transformers>
                     <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                        <mainClass>com.howtodoinjava.Main</mainClass>
+                        <mainClass>com.mannir.server.Runwar</mainClass>
                     </transformer>
                 </transformers>
             </configuration>
