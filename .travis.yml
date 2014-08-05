@@ -1,11 +1,8 @@
 language: java
-mvn package
-
-deploy:
-  provider: releases
-  api-key: "8d2d224c60750b7b2c7eb3c424fae2726c7f9bd6"
-  file: "target/MannirServer.exe"
-  skip_cleanup: true
-  on:
-    tags: true
-    all_branches: true
+jdk:
+  - oraclejdk7
+  - openjdk7
+  - oraclejdk8
+cache:
+  directories:
+    - $HOME/.m2
