@@ -4,4 +4,4 @@ jdk:
 cache:
   directories:
     - $HOME/.m2
-mvn package
+mvn clean package
