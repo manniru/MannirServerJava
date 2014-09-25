@@ -39,8 +39,13 @@ public class EmDb {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(System.getProperty("java.io.tmpdir"));
-		test();
+		//System.out.println(System.getProperty("java.io.tmpdir"));
+		
+		EmDb emdb = new EmDb(dbconfig, dbtype, dbhost, dbport, dbname, dbuser, dbpass);
+		emdb.start();
+		Connection cn = emdb.connect();
+		emdb.test(cn);
+		emdb.stop();
 
 	}
 	
@@ -106,16 +111,25 @@ public class EmDb {
 	}
 	
 	public void stop() {
+		File ourAppDir = new File(System.getProperty(JAVA_IO_TMPDIR));
+        File databaseDir = new File(ourAppDir, "mysql-mxj");
+        mysqldResource = new MysqldResource(databaseDir);
+        Map database_options = new HashMap();
+        database_options.put(MysqldResourceI.PORT, dbport);
+        database_options.put(MysqldResourceI.INITIALIZE_USER, "true");
+        database_options.put(MysqldResourceI.INITIALIZE_USER_NAME, dbuser);
+        database_options.put(MysqldResourceI.INITIALIZE_PASSWORD, dbpass);
+        
 		try {
 			mysqldResource.shutdown();
 			System.out.println("Database Server Stop!");
 			} catch (Exception e) { e.printStackTrace(); }
 	}
 	
-	public static void test() {
-		EmDb emdb = new EmDb(dbconfig, dbtype, dbhost, dbport, dbname, dbuser, dbpass);
-		emdb.start();
-		Connection cn = emdb.connect();
+	public static void test(Connection cn) {
+		//EmDb emdb = new EmDb(dbconfig, dbtype, dbhost, dbport, dbname, dbuser, dbpass);
+		//emdb.start();
+		//Connection cn = emdb.connect();
 		
 		try {
 		int status = cn.createStatement().executeUpdate("CREATE DATABASE db");
