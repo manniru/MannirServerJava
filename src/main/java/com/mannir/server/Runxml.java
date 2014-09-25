@@ -12,9 +12,9 @@ import org.mortbay.jetty.webapp.WebAppContext;
 
 public class Runxml {
 	//static String webxml = "src/main/webapp/WEB-INF/web.xml";
-	static String webxml = "WebContent/WEB-INF/web.xml";
+	static String webxml = "web1\\src\\main\\webapp\\WEB-INF\\web.xml";
 	//static String webdir = "src/main/webapp";
-	static String webdir = "WebContent";
+	static String webdir = "web1\\src\\main\\webapp";
 	//private static String dbURL = "jdbc:derby://localhost:1527/db;create=true;user=admin;password=13131";
 	//public static Connection cn;
  
